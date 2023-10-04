@@ -5,8 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:chcool12.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="150" d:DesignWidth="450">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
+        <Image x:Name="ImageImg" Grid.RowSpan="4"/>
+        <TextBlock Grid.Column="1" x:Name="TitleTb" Height="20" Width="0"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="CostTimeTb" Height="20" Width="0"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="DiscountTb" Height="20" Width="0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+            <Button>Редактировать</Button>
+            <Button>Удалить</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

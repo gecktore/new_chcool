@@ -7,26 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="73"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="39"/>
-            <RowDefinition Height="375"/>
+            <RowDefinition Height="17*"></RowDefinition>
+            <RowDefinition Height="143*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="59*"></ColumnDefinition>
+            <ColumnDefinition Width="375*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Rectangle Fill="#FFE7FABF" Grid.ColumnSpan="2" Margin="0,0,-657,0"></Rectangle>
-        <Rectangle Grid.RowSpan="2" Fill="#FFE7FABF" Margin="0,0,0,-20"></Rectangle>
-        <Image Source="res/school_logo.png"></Image>
-
-        <StackPanel Grid.Row="1"
-                     VerticalAlignment="Bottom" Margin="5">
-            <Button x:Name="BackBut">Назад</Button>
-            <Button x:Name="ForwardBut">Впеерд</Button>
+        <Rectangle Fill="#FFE7F9BF" Grid.ColumnSpan="2" ></Rectangle>
+        <Rectangle Fill="#FFE7F9BF" Grid.RowSpan="2"></Rectangle>
+        <Image Source="/res/school_logo.png"  />
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom" >
+            <Button x:Name="BackBTN">Назад</Button>
+            <Button x:Name="NextBTN">Вперед</Button>
         </StackPanel>
 
-        <TextBlock x:Name="TitleTB" Grid.Column="1" HorizontalAlignment="Stretch" Margin="249,0,-345,0" >Школа языков "Леарн"</TextBlock>
-        <Frame Grid.Row="1" Grid.Column="1" x:Name="MainFrame"></Frame>
+        <TextBlock Grid.Column="1" FontSize="20">Школа языков "Леарн"</TextBlock>
+        <Frame x:Name="MyFrame" Grid.Column="1" Grid.Row="1"></Frame>
     </Grid>
 </Window>
