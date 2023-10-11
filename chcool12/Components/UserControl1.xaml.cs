@@ -20,9 +20,20 @@ namespace chcool12.Components
     /// </summary>
     public partial class UserControl1 : UserControl
     {
-        public UserControl1()
+        public UserControl1(Service service)
         {
             InitializeComponent();
+            if (!App.isAdmin)
+            {
+                DeleteBtn.Visibility = Visibility.Hidden;
+                CreateBtn.Visibility = Visibility.Hidden;
+            }
+            TitleTb.Text = service.Title;
+            CostTimeTb.Text = service.costTimeStr;
+            DiscountTb.Text = service.DiscountStr;
+            CostTb.Text = service.Cost.ToString("N0");
+            CostTb.Visibility = service.CostVisibility;
+
         }
     }
 }

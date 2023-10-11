@@ -15,5 +15,7 @@ namespace chcool12
     public partial class App : Application
     {
         public static ShcoolEntities Entities = new ShcoolEntities();
+        public static bool isAdmin = false;
     }
+    
 }

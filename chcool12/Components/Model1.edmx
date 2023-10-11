@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ShcoolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ShcoolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AttachedProduct">
           <Key>
             <PropertyRef Name="MainProductID" />
@@ -102,6 +102,7 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Discount" Type="float" />
           <Property Name="MainImage" Type="varbinary(max)" />
+          <Property Name="MainImagePath" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="ServicePhoto">
           <Key>
@@ -182,18 +183,6 @@
             </Principal>
             <Dependent Role="ClientService">
               <PropertyRef Name="ClientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClientService_Service">
-          <End Role="Service" Type="Self.Service" Multiplicity="1" />
-          <End Role="ClientService" Type="Self.ClientService" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Service">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ClientService">
-              <PropertyRef Name="ServiceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -355,10 +344,6 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="ClientService" EntitySet="ClientService" />
           </AssociationSet>
-          <AssociationSet Name="FK_ClientService_Service" Association="Self.FK_ClientService_Service">
-            <End Role="Service" EntitySet="Service" />
-            <End Role="ClientService" EntitySet="ClientService" />
-          </AssociationSet>
           <AssociationSet Name="FK_DocumentByService_ClientService" Association="Self.FK_DocumentByService_ClientService">
             <End Role="ClientService" EntitySet="ClientService" />
             <End Role="DocumentByService" EntitySet="DocumentByService" />
@@ -392,8 +377,7 @@
             <End Role="TagOfClient" EntitySet="TagOfClient" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShcoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -506,6 +490,7 @@
           <Property Name="MainImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="ClientService" Relationship="Self.FK_ClientService_Service" FromRole="Service" ToRole="ClientService" />
           <NavigationProperty Name="ServicePhoto" Relationship="Self.FK_ServicePhoto_Service" FromRole="Service" ToRole="ServicePhoto" />
+          <Property Name="MainImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ServicePhoto">
           <Key>
@@ -845,6 +830,7 @@
           <EntitySetMapping Name="Service">
             <EntityTypeMapping TypeName="ShcoolModel.Service">
               <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="MainImagePath" ColumnName="MainImagePath" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />

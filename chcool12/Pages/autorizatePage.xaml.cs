@@ -1,5 +1,4 @@
-﻿using chcool12.Components;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,20 +16,20 @@ using System.Windows.Shapes;
 namespace chcool12.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ServiceListPage.xaml
+    /// Логика взаимодействия для autorizatePage.xaml
     /// </summary>
-    public partial class ServiceListPage : Page
+    public partial class autorizatePage : Page
     {
-        public ServiceListPage()
+        public autorizatePage()
         {
             InitializeComponent();
-            if (!App.isAdmin)
-                AddBut.Visibility = Visibility.Hidden;
-            var servicesList = App.Entities.Service.ToList();
-            foreach ( var service in servicesList)
-            {
-                ServicesWp.Children.Add(new UserControl1(service));
-            }
+        }
+
+        private void EnterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (PasswordPb.Password == "0000")
+                App.isAdmin = true;
+            NavigationService.Navigate(new ServiceListPage());
         }
     }
 }
