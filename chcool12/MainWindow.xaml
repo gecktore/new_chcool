@@ -11,6 +11,7 @@
             <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="143*"></RowDefinition>
         </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="59*"></ColumnDefinition>
             <ColumnDefinition Width="375*"></ColumnDefinition>
@@ -19,6 +20,7 @@
         <Rectangle Fill="#FFE7F9BF" Grid.ColumnSpan="2" ></Rectangle>
         <Rectangle Fill="#FFE7F9BF" Grid.RowSpan="2"></Rectangle>
         <Image Source="/res/school_logo.png"  />
+        
         <StackPanel Grid.Row="1" VerticalAlignment="Bottom" >
             <Button x:Name="BackBTN" Click="BackBTN_Click">Назад</Button>
             <Button x:Name="ExitBTN" Click="ExitBTN_Click">Выход</Button>

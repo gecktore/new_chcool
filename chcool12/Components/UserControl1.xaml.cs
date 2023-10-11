@@ -33,6 +33,7 @@ namespace chcool12.Components
             DiscountTb.Text = service.DiscountStr;
             CostTb.Text = service.Cost.ToString("N0");
             CostTb.Visibility = service.CostVisibility;
+            MainBorder.Background = service.ColorDiscount;
 
         }
     }

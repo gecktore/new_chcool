@@ -28,7 +28,12 @@ namespace chcool12.Pages
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
             if (PasswordPb.Password == "0000")
+            {
                 App.isAdmin = true;
+                MessageBox.Show("Здравствуйте! Вы вошли как администратор!");
+            }
+            else
+                MessageBox.Show("Здравствуйте! Вы вошли как пользователь!");
             NavigationService.Navigate(new ServiceListPage());
         }
     }

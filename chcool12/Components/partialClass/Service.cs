@@ -4,11 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace chcool12.Components
 {
     public partial class Service
     {
+        public decimal CostDiscount
+        {
+            get
+            {
+                if (Discount ==  0)
+                {
+                    return Cost;
+                }
+                else
+                {
+                    return Cost -(Cost * (decimal)Discount / 100);
+                }
+            }
+        }
         public string costTimeStr
         {
             get
@@ -16,7 +31,7 @@ namespace chcool12.Components
                 if (Discount == 0)
                     return $"{Cost} рублей за {DurationInSeconds / 60} минут";
                 else
-                    return $" {Cost - (Cost * (decimal)Discount / 100):0} рублей за {DurationInSeconds / 60} минут";
+                    return $" {CostDiscount:0} рублей за {DurationInSeconds / 60} минут";
             }
         }
         public Visibility CostVisibility
@@ -37,6 +52,16 @@ namespace chcool12.Components
                     return "";
                 else
                     return $"* скидка {Discount}%";
+            }
+        }
+        public Brush ColorDiscount
+        {
+            get
+            {
+                if (Discount == 0)
+                    return new SolidColorBrush(Colors.White);
+                else
+                    return new SolidColorBrush(Colors.LightGreen);
             }
         }
     }

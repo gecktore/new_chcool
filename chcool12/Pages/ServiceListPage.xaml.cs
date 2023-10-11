@@ -21,16 +21,45 @@ namespace chcool12.Pages
     /// </summary>
     public partial class ServiceListPage : Page
     {
+
         public ServiceListPage()
         {
             InitializeComponent();
-            if (!App.isAdmin)
-                AddBut.Visibility = Visibility.Hidden;
             var servicesList = App.Entities.Service.ToList();
-            foreach ( var service in servicesList)
+            if (App.isAdmin == false)
+            {
+                AddBut.Visibility = Visibility.Collapsed;
+            }
+            foreach (var service in servicesList)
+            {
+                ServicesWp.Children.Add(new UserControl1(service));
+
+            }
+
+        }
+        private void Refresh()
+        {
+            IEnumerable<Service> servicesListSort = App.Entities.Service;
+            if (SortCb.SelectedIndex != 0)
+            {
+                if (SortCb.SelectedIndex == 1)
+                {
+                    servicesListSort = servicesListSort.OrderBy(x => x.CostDiscount);
+                }
+                else if (SortCb.SelectedIndex == 2)
+                {
+                    servicesListSort = servicesListSort.OrderByDescending(x => x.CostDiscount);
+                }
+            }
+            ServicesWp.Children.Clear();
+            foreach (var service in servicesListSort)
             {
                 ServicesWp.Children.Add(new UserControl1(service));
             }
+        }
+        private void SortCb_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
         }
     }
 }

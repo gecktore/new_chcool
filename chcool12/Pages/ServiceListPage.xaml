@@ -8,12 +8,19 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ServiceListPage">
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="14*"/>
             <RowDefinition Height="61*"/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox x:Name="SortCb"  SelectionChanged="SortCb_SelectionChanged_1">
+                <ComboBoxItem>По умолчанию</ComboBoxItem>
+                <ComboBoxItem>По возрастанию</ComboBoxItem>
+                <ComboBoxItem>По убыванию</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
             <WrapPanel x:Name="ServicesWp"/>
         </ScrollViewer>
